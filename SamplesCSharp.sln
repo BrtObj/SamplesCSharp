@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexDateTime", "RegexDateT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoundButton", "RoundButton\RoundButton.csproj", "{41E33C61-AB1E-43FE-A07F-C60EF76401FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdleTimer", "IdleTimer\IdleTimer.csproj", "{84EB7D95-9D8D-4031-8485-A54BECE25C52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{41E33C61-AB1E-43FE-A07F-C60EF76401FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41E33C61-AB1E-43FE-A07F-C60EF76401FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41E33C61-AB1E-43FE-A07F-C60EF76401FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84EB7D95-9D8D-4031-8485-A54BECE25C52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84EB7D95-9D8D-4031-8485-A54BECE25C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84EB7D95-9D8D-4031-8485-A54BECE25C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84EB7D95-9D8D-4031-8485-A54BECE25C52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
