@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoundButton", "RoundButton\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdleTimer", "IdleTimer\IdleTimer.csproj", "{84EB7D95-9D8D-4031-8485-A54BECE25C52}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterpolatedStrings", "InterpolatedStrings\InterpolatedStrings.csproj", "{483A1C5E-6CCA-4827-89DC-0BE2FECB7872}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{84EB7D95-9D8D-4031-8485-A54BECE25C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84EB7D95-9D8D-4031-8485-A54BECE25C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84EB7D95-9D8D-4031-8485-A54BECE25C52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{483A1C5E-6CCA-4827-89DC-0BE2FECB7872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{483A1C5E-6CCA-4827-89DC-0BE2FECB7872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{483A1C5E-6CCA-4827-89DC-0BE2FECB7872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{483A1C5E-6CCA-4827-89DC-0BE2FECB7872}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
