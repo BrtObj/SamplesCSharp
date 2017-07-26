@@ -13,6 +13,14 @@ namespace RoundButton
 {
     public partial class MyButton : Button
     {
+        private bool isMouseHover = false;
+        private int m_ArcRadious = 0;
+        public int ArcRadious
+        {
+            get { return m_ArcRadious; }
+            set { m_ArcRadious = value; }
+        }
+
         public MyButton()
         {
             InitializeComponent();
@@ -26,8 +34,16 @@ namespace RoundButton
             pevent.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             //pevent.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
-            PaintCenter(pevent.Graphics);
-            PaintBorder(pevent.Graphics);
+            GraphicsPath _path = new GraphicsPath();
+            int _diameter = m_ArcRadious * 2;
+            _path.AddArc(ClientRectangle.Left, ClientRectangle.Bottom - _diameter, _diameter, _diameter - 1, 90, 90);
+            _path.AddArc(ClientRectangle.Left, ClientRectangle.Top, _diameter, _diameter, 180, 90);
+            _path.AddArc(ClientRectangle.Right - _diameter, ClientRectangle.Top, _diameter - 1, _diameter, 270, 90);
+            _path.AddArc(ClientRectangle.Right - _diameter, ClientRectangle.Bottom - _diameter, _diameter - 1, _diameter - 1, 0, 90);
+            _path.CloseFigure();
+
+            PaintCenter(pevent.Graphics, _path);
+            PaintBorder(pevent.Graphics, _path);
             PaintText(pevent.Graphics);
         }
 
@@ -39,38 +55,29 @@ namespace RoundButton
             sf.LineAlignment = StringAlignment.Center;
             g.DrawString(base.Text, this.Font, Brushes.Black, base.DisplayRectangle, sf);
         }
-        private void PaintBorder(Graphics g)
+
+        private void PaintBorder(Graphics g, GraphicsPath p)
         {
             using (var pen = new Pen(Color.FromArgb(60, Color.Black), 1))
-                g.DrawEllipse(pen, getCenterRect());
+                g.DrawPath(pen, p);
         }
 
-        private void PaintCenter(Graphics g)
+        private void PaintCenter(Graphics g, GraphicsPath p)
         {
             if (!isMouseHover)
             {
-                // Color.FromArgb(128 ,是透明度
-                var lgb = new LinearGradientBrush(getCenterRect(), Color.FromArgb(128, 191, 191, 191), Color.FromArgb(128, 255, 255, 255),
+                var lgb = new LinearGradientBrush(ClientRectangle, Color.FromArgb(128, 191, 191, 191), Color.FromArgb(128, 255, 255, 255),
                                                         LinearGradientMode.ForwardDiagonal);
-
-                g.FillEllipse(lgb, getCenterRect());
+                g.FillPath(lgb, p);
             }
             else
             {
-                var lgb = new LinearGradientBrush(getCenterRect(), Color.Transparent, Color.Lime,
+                var lgb = new LinearGradientBrush(ClientRectangle, Color.Transparent, Color.Lime,
                                                       LinearGradientMode.ForwardDiagonal);
-                g.FillEllipse(lgb, getCenterRect());
+                g.FillPath(lgb, p);
             }
-
         }
 
-        private Rectangle getCenterRect()
-        {
-            Rectangle rect = new Rectangle(4, 4, this.Width - 8, this.Height - 8);
-            return rect;
-        }
-
-        private bool isMouseHover = false;
         private void MyButton_MouseHover(object sender, EventArgs e)
         {
             isMouseHover = true;
@@ -85,7 +92,7 @@ namespace RoundButton
 
         private void MyButton_MouseMove(object sender, MouseEventArgs e)
         {
-            isMouseHover = getCenterRect().Contains(e.Location);
+            isMouseHover = ClientRectangle.Contains(e.Location);
             Invalidate();
         }
     }
